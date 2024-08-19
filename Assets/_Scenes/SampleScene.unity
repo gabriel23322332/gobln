@@ -163,6 +163,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d53bec127f06ec944881539ff3769893, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cardsHand: 00000000000000000000000000000000
+  cardsHeld: 0
+  handIsFull: 0
 --- !u!1 &371475427
 GameObject:
   m_ObjectHideFlags: 0
@@ -284,7 +287,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d8f3d60ddd1ad8438da4e0a7836e54a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  players:
+  goblins:
   - {fileID: 188479367}
   - {fileID: 1882981218}
   - {fileID: 1211660800}
@@ -352,6 +355,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d53bec127f06ec944881539ff3769893, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cardsHand: 00000000000000000000000000000000
+  cardsHeld: 0
+  handIsFull: 0
 --- !u!1 &1707022260
 GameObject:
   m_ObjectHideFlags: 0
@@ -396,6 +402,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d53bec127f06ec944881539ff3769893, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cardsHand: 00000000000000000000000000000000
+  cardsHeld: 0
+  handIsFull: 0
 --- !u!1 &1882981218
 GameObject:
   m_ObjectHideFlags: 0
@@ -440,6 +449,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d53bec127f06ec944881539ff3769893, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cardsHand: 00000000000000000000000000000000
+  cardsHeld: 0
+  handIsFull: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

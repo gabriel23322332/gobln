@@ -5,21 +5,17 @@ using UnityEngine;
 public class CardsDealer : MonoBehaviour
 {
     private int[][] cardsDeck;
-    private Vector2Int cardToDeal;
-    public GameObject[] players;
-    private int playerToDeal;
+    public GameObject[] goblins;
     
     // Start is called before the first frame update
     void Start()
     {
-        cardToDeal = new Vector2Int(0, 0);
-
         cardsDeck = new int[][]
         {
             new int[] {01,11,21,31}, //todas as cartas que terminarem em "x" serão do mesmo número
             new int[] {02,12,22,32}, //a casa decimal representa o naipe daquela carta
             new int[] {03,13,23,33}, //comparando os naipes (%10) a gente sabe quando podemos bater
-            new int[] {04,14,24,34}  //associaremos os valores à cada carta na mão do player.
+            new int[] {04,14,24,34}  //associaremos os valores à cada carta na mão do goblin.
         };
 
         DealCards();
@@ -29,20 +25,34 @@ public class CardsDealer : MonoBehaviour
     {
         //int deckLength = cardsDeck[1].Length * cardsDeck.GetLength(0);
         //Debug.Log(deckLength);
+        GameObject goblinToDeal;
+        EnemiesExample goblinScript;
 
-        for (int i =0; i< cardsDeck[1].Length; i++)
+        for (int i =0; i< cardsDeck[0].Length; i++)
         {
             for(int j=0; j< cardsDeck.GetLength(0); j++)
             {
-                //cardToDeal = new Vector2Int(i, j);
-                playerToDeal = Random.Range(0, players.Length);
-                if (players[playerToDeal].GetComponent<EnemiesExample>().handIsFull)
+                goblinToDeal = goblins[Random.Range(0, goblins.Length)];
+                goblinScript = goblinToDeal.GetComponent<EnemiesExample>();
+
+                while (goblinScript.handIsFull)
                 {
-                    //botar while(handIsFull) aqui
+                    goblinToDeal = goblins[Random.Range(0, goblins.Length)];
+                    goblinScript = goblinToDeal.GetComponent<EnemiesExample>();
                 }
-                else
-                players[playerToDeal].GetComponent<EnemiesExample>().cardsHand[players[playerToDeal].GetComponent<EnemiesExample>().cardsHeld] = cardsDeck[i][j];
+
+                Debug.Log("i:" + i + ", j: " + j);
+                goblinScript.cardsHand[goblinScript.cardsHeld] = cardsDeck[i][j];
+                goblinScript.cardsHeld++;
+
+                if (goblinScript.cardsHeld == 4)
+                    goblinScript.handIsFull = true;
             }
         }
+
+       ////Printar todas as cartas em suas respectivas mãos
+       //for (int i = 0; i < 4; i++)
+       //    for (int j = 0; j < 4; j++)
+       //        Debug.Log("Goblin "+ i + ":" + goblins[i].GetComponent<EnemiesExample>().cardsHand[j] + ", ");
     }
 }
