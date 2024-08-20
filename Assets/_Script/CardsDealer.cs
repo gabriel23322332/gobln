@@ -4,19 +4,50 @@ using UnityEngine;
 
 public class CardsDealer : MonoBehaviour
 {
-    private int[][] cardsDeck;
+    private int cardsIndex;
+    private Cards[]cardsDeck;
     public GameObject[] goblins;
     
     // Start is called before the first frame update
     void Start()
     {
-        cardsDeck = new int[][]
+        cardsDeck = new Cards[17];
+        cardsIndex = 0;
+
+        for(int i =0; i<4; i++) //define o naipe
         {
-            new int[] {01,11,21,31}, //todas as cartas que terminarem em "x" serão do mesmo número
-            new int[] {02,12,22,32}, //a casa decimal representa o naipe daquela carta
-            new int[] {03,13,23,33}, //comparando os naipes (%10) a gente sabe quando podemos bater
-            new int[] {04,14,24,34}  //associaremos os valores à cada carta na mão do goblin.
-        };
+            Cards card = new Cards();
+            
+            for (int j = 0; j < 4; j++) //define o numero
+            {
+                card.number = j;
+
+                switch(i)
+                {
+                    case 0:
+                        card.cardNaipe = Cards.Naipe.Espada;
+                        break;
+                    case 1:
+                        card.cardNaipe = Cards.Naipe.Castelo;
+                        break;
+                    case 2:
+                        card.cardNaipe = Cards.Naipe.Cerveja;
+                        break;
+                    case 3:
+                        card.cardNaipe = Cards.Naipe.Dinheiro;
+                        break;
+                }
+                //Debug.Log(cardsIndex);
+                cardsDeck[cardsIndex] = card;
+                cardsIndex++;
+            }
+
+        }
+
+        Cards joker = new Cards();
+        joker.number = 0;
+        joker.cardNaipe = Cards.Naipe.Coringa;
+        cardsDeck[cardsIndex] = joker;
 
         DealCards();
     }
@@ -26,33 +57,31 @@ public class CardsDealer : MonoBehaviour
         //int deckLength = cardsDeck[1].Length * cardsDeck.GetLength(0);
         //Debug.Log(deckLength);
         GameObject goblinToDeal;
-        EnemiesExample goblinScript;
+        Character goblinScript;
 
-        for (int i =0; i< cardsDeck[0].Length; i++)
+        for (int i =0; i< cardsDeck.Length; i++)
         {
-            for(int j=0; j< cardsDeck.GetLength(0); j++)
-            {
-                goblinToDeal = goblins[Random.Range(0, goblins.Length)];
-                goblinScript = goblinToDeal.GetComponent<EnemiesExample>();
+            goblinToDeal = goblins[Random.Range(0, goblins.Length)];
+            goblinScript = goblinToDeal.GetComponent<Character>();
 
-                while (goblinScript.handIsFull)
-                {
-                    goblinToDeal = goblins[Random.Range(0, goblins.Length)];
-                    goblinScript = goblinToDeal.GetComponent<EnemiesExample>();
-                }
+            //while (goblinScript.handIsFull)
+            //{
+            //    goblinToDeal = goblins[Random.Range(0, goblins.Length)];
+            //    goblinScript = goblinToDeal.GetComponent<Character>();
+            //}
 
-                Debug.Log("i:" + i + ", j: " + j);
-                goblinScript.cardsHand[goblinScript.cardsHeld] = cardsDeck[i][j];
-                goblinScript.cardsHeld++;
+            Debug.Log("i: " + i);
 
-                if (goblinScript.cardsHeld == 4)
-                    goblinScript.handIsFull = true;
-            }
+            goblinScript.cardsHand[goblinScript.cardsHeld] = cardsDeck[i];
+            goblinScript.cardsHeld++;
+
+            if (goblinScript.cardsHeld == 4)
+                goblinScript.handIsFull = true;
         }
 
-       ////Printar todas as cartas em suas respectivas mãos
-       //for (int i = 0; i < 4; i++)
-       //    for (int j = 0; j < 4; j++)
-       //        Debug.Log("Goblin "+ i + ":" + goblins[i].GetComponent<EnemiesExample>().cardsHand[j] + ", ");
+       //Printar todas as cartas em suas respectivas mãos
+       for (int i = 0; i < 4; i++)
+           for (int j = 0; j < 4; j++)
+               Debug.Log("Goblin "+ i + ": " + goblins[i].GetComponent<Character>().cardsHand[j].cardNaipe + ", " + goblins[i].GetComponent<Character>().cardsHand[j].number);
     }
 }
