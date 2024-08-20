@@ -11,54 +11,38 @@ public class CardsDealer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        cardsDeck = new Cards[17];
+
         cardsIndex = 0;
-
-        for(int i =0; i<4; i++) //define o naipe
+        cardsDeck = new Cards[]
+#region
         {
-            Cards card = new Cards();
-            
-            for (int j = 0; j < 4; j++) //define o numero
-            {
-                card.number = j;
-
-                switch(i)
-                {
-                    case 0:
-                        card.cardNaipe = Cards.Naipe.Espada;
-                        break;
-                    case 1:
-                        card.cardNaipe = Cards.Naipe.Castelo;
-                        break;
-                    case 2:
-                        card.cardNaipe = Cards.Naipe.Cerveja;
-                        break;
-                    case 3:
-                        card.cardNaipe = Cards.Naipe.Dinheiro;
-                        break;
-                }
-                //Debug.Log(cardsIndex);
-                cardsDeck[cardsIndex] = card;
-                cardsIndex++;
-            }
-
-        }
-
-        Cards joker = new Cards();
-        joker.number = 0;
-        joker.cardNaipe = Cards.Naipe.Coringa;
-        cardsDeck[cardsIndex] = joker;
-
+            new Cards(1, Cards.Naipe.Castelo),
+            new Cards(2, Cards.Naipe.Castelo),
+            new Cards(3, Cards.Naipe.Castelo),
+            new Cards(4, Cards.Naipe.Castelo),
+            new Cards(1, Cards.Naipe.Cerveja),
+            new Cards(2, Cards.Naipe.Cerveja),
+            new Cards(3, Cards.Naipe.Cerveja),
+            new Cards(4, Cards.Naipe.Cerveja),
+            new Cards(1, Cards.Naipe.Espada),
+            new Cards(2, Cards.Naipe.Espada),
+            new Cards(3, Cards.Naipe.Espada),
+            new Cards(4, Cards.Naipe.Espada),
+            new Cards(1, Cards.Naipe.Dinheiro),
+            new Cards(2, Cards.Naipe.Dinheiro),
+            new Cards(3, Cards.Naipe.Dinheiro),
+            new Cards(4, Cards.Naipe.Dinheiro),
+            new Cards(0, Cards.Naipe.Coringa),
+        };
+        #endregion
         DealCards();
     }
 
     void DealCards()
     {
-        //int deckLength = cardsDeck[1].Length * cardsDeck.GetLength(0);
-        //Debug.Log(deckLength);
         GameObject goblinToDeal;
         Character goblinScript;
-
+        
         for (int i =0; i< cardsDeck.Length; i++)
         {
             do
@@ -77,9 +61,10 @@ public class CardsDealer : MonoBehaviour
                 goblinScript.handIsFull = true;
         }
 
-      //Printar todas as cartas em suas respectivas mãos
-      //for (int i = 0; i < 4; i++)
-      //    for (int j = 0; j < 4; j++)
-      //        Debug.Log("Goblin "+ i + ": " + goblins[i].GetComponent<Character>().cardsHand[j].cardNaipe + ", " + goblins[i].GetComponent<Character>().cardsHand[j].number);
+      //Printar todas as cartas de suas respectivas mãos
+      //"Goblin 0" = player
+      for (int i = 0; i < 4; i++)
+          for (int j = 0; j < 4; j++)
+              Debug.Log("Goblin "+ i + ": " + goblins[i].GetComponent<Character>().cardsHand[j].cardNaipe + ", " + goblins[i].GetComponent<Character>().cardsHand[j].number);
     }
 }

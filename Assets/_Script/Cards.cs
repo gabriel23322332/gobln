@@ -2,17 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Cards
+public class Cards 
 {
-    public enum Naipe {Espada, Castelo, Cerveja, Dinheiro, Coringa};
+    public enum Naipe
+    {
+        Espada =1,
+        Castelo =2,
+        Cerveja =3,
+        Dinheiro =4,
+        Coringa =0
+    };
     public int number;
     public Naipe cardNaipe;
-
-    private Texture2D[] cardSprites;
-   
-    public Cards()
+    public Cards(int n, Naipe p )
     {
-        number = 0;
-        cardNaipe = Naipe.Coringa;
+        number = n;
+        cardNaipe = p;
     }
 }
