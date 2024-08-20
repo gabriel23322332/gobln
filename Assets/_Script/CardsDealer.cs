@@ -61,14 +61,12 @@ public class CardsDealer : MonoBehaviour
 
         for (int i =0; i< cardsDeck.Length; i++)
         {
-            goblinToDeal = goblins[Random.Range(0, goblins.Length)];
-            goblinScript = goblinToDeal.GetComponent<Character>();
-
-            //while (goblinScript.handIsFull)
-            //{
-            //    goblinToDeal = goblins[Random.Range(0, goblins.Length)];
-            //    goblinScript = goblinToDeal.GetComponent<Character>();
-            //}
+            do
+            {
+                goblinToDeal = goblins[Random.Range(0, goblins.Length)];
+                goblinScript = goblinToDeal.GetComponent<Character>();
+            }
+            while (goblinScript.handIsFull && i < cardsDeck.Length-1);
 
             Debug.Log("i: " + i);
 
@@ -79,9 +77,9 @@ public class CardsDealer : MonoBehaviour
                 goblinScript.handIsFull = true;
         }
 
-       //Printar todas as cartas em suas respectivas mãos
-       for (int i = 0; i < 4; i++)
-           for (int j = 0; j < 4; j++)
-               Debug.Log("Goblin "+ i + ": " + goblins[i].GetComponent<Character>().cardsHand[j].cardNaipe + ", " + goblins[i].GetComponent<Character>().cardsHand[j].number);
+      //Printar todas as cartas em suas respectivas mãos
+      //for (int i = 0; i < 4; i++)
+      //    for (int j = 0; j < 4; j++)
+      //        Debug.Log("Goblin "+ i + ": " + goblins[i].GetComponent<Character>().cardsHand[j].cardNaipe + ", " + goblins[i].GetComponent<Character>().cardsHand[j].number);
     }
 }

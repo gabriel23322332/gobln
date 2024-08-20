@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
-    public Cards[] cardsHand = new Cards[4];
+    public Cards[] cardsHand = new Cards[5];
     public int cardsHeld = 0;
     public bool handIsFull = false;
-    
+   
 }
