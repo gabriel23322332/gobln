@@ -603,7 +603,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 3052218197092107100, guid: 71ae268a78044ee4798f1499cc7b377c, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -611,7 +611,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1380629786
@@ -779,8 +779,8 @@ MonoBehaviour:
   - {fileID: -3178015247244009295, guid: b31b1b84ca59a3146881de3645842523, type: 3}
   - {fileID: 4509825189250234232, guid: 8f7fbd2591758034a8d7fd5a22d06e62, type: 3}
   cardPannels:
-  - {fileID: 1380629786}
   - {fileID: 1932891872}
+  - {fileID: 1380629786}
   - {fileID: 679285815}
   - {fileID: 1054194416}
   - {fileID: 1264074959}

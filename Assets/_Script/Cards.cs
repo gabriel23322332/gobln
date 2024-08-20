@@ -10,7 +10,7 @@ public class Cards
         Castelo =2,
         Cerveja =3,
         Dinheiro =4,
-        Coringa =0
+        Coringa =1
     };
     public int number;
     public Naipe cardNaipe;
