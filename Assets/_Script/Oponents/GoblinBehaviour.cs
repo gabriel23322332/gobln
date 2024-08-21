@@ -1,28 +1,51 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEditor.Animations;
+using UnityEngine;
 
 namespace _Script.Oponents
 {
   public class GoblinBehaviour : MonoBehaviour
   {
-    private bool distracted = false;
-    private float distractedDuration;
+    private bool _distracted = false;
+    private float _distractedDuration;
+    private Animator _animator;
 
-    public void Distract(float duration)
+    private void Start()
     {
-      distracted = true;
-      distractedDuration = duration;
+      _animator = gameObject.GetComponent<Animator>();
     }
 
     private void Update()
     {
-      if (distracted && distractedDuration > 0)
+      if (_distracted && _distractedDuration > 0)
       {
-        distractedDuration -= Time.deltaTime;
+        _distractedDuration -= Time.deltaTime;
       }
       else
       {
-        distracted = false;
+        _distracted = false;
+        _animator.SetBool("Distracted", false);
       }
+    }
+
+    public void Distract(float duration, Sprite sprite)
+    {
+      if (_distracted) return;
+      _distracted = true;
+      _distractedDuration = duration;
+      _animator.SetBool("Distracted", true);
+    }
+
+    public bool IsDistracted()
+    {
+      return _distracted;
+    }
+
+
+    public void SetAvailable()
+    {
+      if (_distracted) return;
+      _animator.SetBool("Available", true);
     }
   }
 }
