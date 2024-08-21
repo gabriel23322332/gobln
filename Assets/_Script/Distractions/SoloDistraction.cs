@@ -3,15 +3,20 @@ using System.Collections;
 using System.Collections.Generic;
 using _Script.Oponents;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UIElements;
 
-public class Kick : MonoBehaviour
+public class SoloDistraction : MonoBehaviour
 {
     public GoblinBehaviour[] goblins;
     public float distractionDuration = 5f;
     public float cooldownDuration = 15f;
+    public float imageDuration = 1f;
+    public SpriteRenderer imageObject;
+    public Sprite distractionSprite;
 
     private float _currentCooldown = 0f;
+    private float _imageTimer = 0f;
     private bool _active = false;
     private bool _onCooldown = false;
     private SpriteRenderer _renderer;
@@ -36,12 +41,7 @@ public class Kick : MonoBehaviour
                         Debug.Log("Collided");
                         _active = false;
                         ToggleAllAvailable();
-                        goblin.Distract(distractionDuration);
-                        _onCooldown = true;
-                        _currentCooldown = cooldownDuration;
-                        Color c = _renderer.color;
-                        c.a = 0.1f;
-                        _renderer.color = c;
+                        StartCoroutine(ShowImage(goblin));
                     }
                 }
             }
@@ -74,5 +74,19 @@ public class Kick : MonoBehaviour
         {
             goblin.ToggleAvailable();
         }
+    }
+
+    private IEnumerator ShowImage(GoblinBehaviour g)
+    {
+        imageObject.sprite = distractionSprite;
+        imageObject.gameObject.SetActive(true);
+        yield return new WaitForSeconds(imageDuration);
+        imageObject.gameObject.SetActive(false);
+        g.Distract(distractionDuration);
+        _onCooldown = true;
+        _currentCooldown = cooldownDuration;
+        Color c = _renderer.color;
+        c.a = 0.1f;
+        _renderer.color = c;
     }
 }
