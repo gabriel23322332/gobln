@@ -7,8 +7,11 @@ namespace _Script.Oponents
   public class GoblinBehaviour : MonoBehaviour
   {
     private bool _distracted = false;
+    private bool _available = false;
     private float _distractedDuration;
     private Animator _animator;
+
+    public Action<GoblinBehaviour> onAvailableClick;
 
     private void Start()
     {
@@ -28,8 +31,9 @@ namespace _Script.Oponents
       }
     }
 
-    public void Distract(float duration, Sprite sprite)
+    public void Distract(float duration)
     {
+      Debug.Log("Distract");
       if (_distracted) return;
       _distracted = true;
       _distractedDuration = duration;
@@ -42,10 +46,11 @@ namespace _Script.Oponents
     }
 
 
-    public void SetAvailable()
+    public void ToggleAvailable()
     {
       if (_distracted) return;
-      _animator.SetBool("Available", true);
+      _available = !_available;
+      _animator.SetBool("Available", _available);
     }
   }
 }
