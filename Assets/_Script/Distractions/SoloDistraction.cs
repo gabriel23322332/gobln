@@ -11,6 +11,7 @@ public class SoloDistraction : MonoBehaviour
     public GoblinBehaviour[] goblins;
     public float distractionDuration = 5f;
     public float cooldownDuration = 15f;
+    public float cancelCooldownDuration = 1f;
     public float imageDuration = 1f;
     public SpriteRenderer imageObject;
     public Sprite distractionSprite;
@@ -64,15 +65,29 @@ public class SoloDistraction : MonoBehaviour
     private void OnMouseDown()
     {
         if (_onCooldown) return;
-        _active = true;
+
+
+        _active = !_active;
         ToggleAllAvailable();
+        // Small cooldown if cancel the action
+        if (_active == false)
+        {
+            _onCooldown = true;
+            _currentCooldown = 1f;
+            Color c = _renderer.color;
+            c.a = 0.1f;
+            _renderer.color = c;
+        }
     }
 
     private void ToggleAllAvailable()
     {
         foreach (var goblin in goblins)
         {
-            goblin.ToggleAvailable();
+            if (!goblin.IsDistracted())
+            {
+                goblin.ToggleAvailable();
+            }
         }
     }
 
