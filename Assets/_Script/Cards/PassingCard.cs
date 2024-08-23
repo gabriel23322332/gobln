@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class PassingCard : MonoBehaviour
 {
+    private static GameObject[] goblinList;
     public GameObject[] anchorList;
+    public GameObject goblinExamples;
     private GameObject passingCard;
-    private int turnIndex;
+    private static int turnIndex;
     private float timer;
     private static bool passAnim;
     
@@ -16,6 +18,14 @@ public class PassingCard : MonoBehaviour
         passAnim = false;
         turnIndex = 0;
         timer = 0;
+
+        goblinList = new GameObject[4];
+        goblinList[0] = goblinExamples.transform.GetChild(0).gameObject;
+        goblinList[1] = goblinExamples.transform.GetChild(1).gameObject;
+        goblinList[2] = goblinExamples.transform.GetChild(2).gameObject;
+        goblinList[3] = goblinExamples.transform.GetChild(3).gameObject;
+
+        //anchorList[]
         //0 = right anchor
         //1 = right goblin
         //2 = middle goblin
@@ -36,13 +46,21 @@ public class PassingCard : MonoBehaviour
                 timer = 0;
                 turnIndex++;
                 passAnim = false;
+
+                if (turnIndex >= 4)
+                    turnIndex = 0;
             }
         }
     }
 
-    public static void PassCard(/*Cards c*/)
+    public static void PassCard(Cards c, int i) //c para carta que será passada adiante; i para posição dentro da cardsHand na qual a carta passada estava, para ser substituida
     {
         passAnim = true;
+
+        goblinList[turnIndex+1].GetComponent<Character>().cardsHand[4] = c;
+        goblinList[turnIndex].GetComponent<Character>().cardsHand[i] = goblinList[turnIndex].GetComponent<Character>().cardsHand[4];
+        goblinList[turnIndex].GetComponent<Character>().cardsHand[4] = null;
+
         Debug.Log("Passing");
     }
 

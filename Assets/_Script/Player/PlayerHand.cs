@@ -32,4 +32,9 @@ public class PlayerHand : MonoBehaviour
             cardPannels[i].GetComponent<SpriteRenderer>().sprite = cardSprites[(naipe-1)*4+numero];
         }
     }
+
+    private void OnMouseDown()
+    {
+        
+    }
 }
