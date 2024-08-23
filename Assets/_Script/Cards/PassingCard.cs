@@ -7,7 +7,7 @@ public class PassingCard : MonoBehaviour
     public GameObject[] anchorList;
     private GameObject passingCard;
     private int turnIndex;
-    private int timer;
+    private float timer;
     private static bool passAnim;
     
     void Start()
@@ -21,31 +21,32 @@ public class PassingCard : MonoBehaviour
         //2 = middle goblin
         //3 = left goblin
         //4 = left anchor
-        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(passAnim)
+        if (passAnim)
         {
-            passingCard.transform.position = Vector2.Lerp(anchorList[turnIndex].transform.position, anchorList[turnIndex + 1].transform.position, 1);
-            if (passingCard.transform.position.x <= anchorList[turnIndex + 1].transform.position.x * 0.95)
+            timer += Time.deltaTime*1.5f;
+            passingCard.transform.position = Vector2.Lerp(anchorList[turnIndex].transform.position, anchorList[turnIndex + 1].transform.position, timer);
+            
+            if (passingCard.transform.position.x == anchorList[turnIndex + 1].transform.position.x)
             {
                 timer = 0;
-
+                turnIndex++;
                 passAnim = false;
             }
         }
     }
 
-    public static void PassCard(Cards c)
+    public static void PassCard(/*Cards c*/)
     {
         passAnim = true;
-
+        Debug.Log("Passing");
     }
 
-    //jogdor termina o turno, Pass card
+    //jogador termina o turno, Pass card
     //animação da carta passada ativa
     //quando terminar
 }
