@@ -8,7 +8,7 @@ public class PassingCard : MonoBehaviour
     public GameObject[] anchorList;
     public GameObject goblinExamples;
     private GameObject passingCard;
-    private static int turnIndex;
+    public static int turnIndex;
     private float timer;
     private static bool passAnim;
     

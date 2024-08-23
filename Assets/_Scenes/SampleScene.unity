@@ -763,6 +763,7 @@ GameObject:
   - component: {fileID: 679285816}
   - component: {fileID: 679285817}
   - component: {fileID: 679285818}
+  - component: {fileID: 679285819}
   m_Layer: 0
   m_Name: Card3
   m_TagString: Untagged
@@ -827,7 +828,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -885,6 +886,20 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &679285819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 679285815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bcfc2036ccb8b847be971c8b02bb8ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1707022260}
+  pannelNumber: 3
 --- !u!1 &873464631
 GameObject:
   m_ObjectHideFlags: 0
@@ -1013,6 +1028,7 @@ GameObject:
   - component: {fileID: 1054194417}
   - component: {fileID: 1054194418}
   - component: {fileID: 1054194419}
+  - component: {fileID: 1054194420}
   m_Layer: 0
   m_Name: Card4
   m_TagString: Untagged
@@ -1135,6 +1151,20 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1054194420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1054194416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bcfc2036ccb8b847be971c8b02bb8ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1707022260}
+  pannelNumber: 4
 --- !u!1 &1176200656
 GameObject:
   m_ObjectHideFlags: 0
@@ -1315,6 +1345,7 @@ GameObject:
   - component: {fileID: 1264074960}
   - component: {fileID: 1264074961}
   - component: {fileID: 1264074962}
+  - component: {fileID: 1264074963}
   m_Layer: 0
   m_Name: Card5
   m_TagString: Untagged
@@ -1437,6 +1468,20 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1264074963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1264074959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bcfc2036ccb8b847be971c8b02bb8ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1707022260}
+  pannelNumber: 5
 --- !u!1 &1380629786
 GameObject:
   m_ObjectHideFlags: 0
@@ -1448,6 +1493,7 @@ GameObject:
   - component: {fileID: 1380629787}
   - component: {fileID: 1380629788}
   - component: {fileID: 1380629789}
+  - component: {fileID: 1380629790}
   m_Layer: 0
   m_Name: Card2
   m_TagString: Untagged
@@ -1570,6 +1616,20 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1380629790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1380629786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bcfc2036ccb8b847be971c8b02bb8ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1707022260}
+  pannelNumber: 2
 --- !u!1 &1539685758
 GameObject:
   m_ObjectHideFlags: 0
@@ -1881,6 +1941,7 @@ GameObject:
   - component: {fileID: 1932891873}
   - component: {fileID: 1932891874}
   - component: {fileID: 1932891875}
+  - component: {fileID: 1932891876}
   m_Layer: 0
   m_Name: Card1
   m_TagString: Untagged
@@ -2003,6 +2064,20 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1932891876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1932891872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bcfc2036ccb8b847be971c8b02bb8ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1707022260}
+  pannelNumber: 1
 --- !u!1 &2026561142
 GameObject:
   m_ObjectHideFlags: 0
@@ -2092,11 +2167,7 @@ MonoBehaviour:
   - {fileID: 873464631}
   - {fileID: 605666985}
   - {fileID: 1539685758}
-  goblinList:
-  - {fileID: 188479367}
-  - {fileID: 1882981218}
-  - {fileID: 1211660800}
-  - {fileID: 1707022260}
+  goblinExamples: {fileID: 642496244}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
